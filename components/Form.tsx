@@ -9,9 +9,9 @@ export default function Form() {
         e.preventDefault()
 
         try {
-            const InputValue:string = e.target[0].value.toUpperCase()
-            const fullUrl:string = `https://cloud.iexapis.com/stable/stock/${InputValue}/intraday-prices?token=${process.env.NEXT_PUBLIC_TOKEN_API}`
-            
+            const InputValue:string = e.target[0].value
+            const fullUrl:string = `https://www.alphavantage.co/query?function=${'TIME_SERIES_INTRADAY'}&symbol=${InputValue.toUpperCase()}&interval=${'5min'}&apikey=${process.env.NEXT_PUBLIC_TOKEN_API}`
+
             const response = await fetch(fullUrl)
             const data = await response.json()
             setData(data)
@@ -26,7 +26,7 @@ export default function Form() {
       <main>
 
         <form onSubmit={handlerSubmit}>
-          <input type="text" id="" placeholder='Search your stock'/>
+          <input type="text" id="" placeholder='Type the Symbol'/>
           <input type="submit" value='Search'/>
         </form>
 
