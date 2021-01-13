@@ -20,7 +20,7 @@ export default function Chart ({data}:Iprops){
     return(
         <section className={styles.section}>
             
-            <Line data={data} options={{responsive:true,maintainAspectRatio:false}}/>
+            <Line data={data} options={{responsive:true,maintainAspectRatio:false,responsiveAnimationDuration:1500}}/>
 
         </section>)
 }
