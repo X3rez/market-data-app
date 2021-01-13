@@ -10,12 +10,10 @@ interface Ioptions {
     }[];
 }
 
-
 interface Iprops {
     data:Ioptions,
     options?:{}
 }
-
 
 export default function Chart ({data,options}:Iprops){
 
@@ -24,8 +22,8 @@ export default function Chart ({data,options}:Iprops){
 
             <Line data={data} 
             width={1000}
-            height={600}
+            height={400}
             />
 
-   </section>)
+        </section>)
 }

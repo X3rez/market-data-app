@@ -1,15 +1,20 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.css'
 import Form from "../components/Form";
-export default function Home() {
+import Bar from '../components/appBar'
+
+export default function Home():JSX.Element {
   return (
-    <div className={styles.container}>
+    <div >
       <Head>
         <title>Welcome - MyMarket</title>
         <link rel="icon" href="/favicon.ico" />
-      </Head>
-      <main>
-
+      </Head>  
+      <header>
+        <Bar /> 
+      </header> 
+      <main className={styles.container}>
+        
         <Form />
 
       </main>

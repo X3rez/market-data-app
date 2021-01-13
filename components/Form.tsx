@@ -3,6 +3,10 @@ import styles from '../styles/form.module.css'
 import Chart from "./Chart";
 import CircleLoader from "react-spinners/CircleLoader";
 import mapping from '../untils/mapping'
+import { Input,IconButton,Select } from "@material-ui/core";
+import SearchIcon from "@material-ui/icons/Search";
+import { css } from "@emotion/core"
+
 
 export default function Form() {
     const [loanding,setLoanding] = useState<boolean>(false)
@@ -142,30 +146,29 @@ export default function Form() {
             backgroundColor:['rgba(255, 0, 0, 0.397)'],
         }]}
 
+    const loaderStyles = css`
+    display: block;
+    margin: 0 auto;
+    border-color: red;
+    `;
+
     return (
         
-        
-      <main>
+      <main className={styles.main}>
 
-        <form onSubmit={handlerSubmit}>
-          <input type="text" id="" placeholder='Type the Symbol'/>
-          <input type="submit" value='Search'/>
+        <form onSubmit={handlerSubmit} className={styles.formulary}>
+          <Input autoFocus={true} placeholder='Type the Symbol' required color="secondary"/>
+          <IconButton type="submit" color='secondary'>
+                <SearchIcon/>
+          </IconButton>
 
-            <select defaultValue='5min'>
-                <option value="1min">1min</option>
+            <Select defaultValue='5min' color='secondary'>
                 <option value="5min">5min</option>
-                <option value="15min">15min</option>
-                <option value="30min">30min</option>
-                <option value="60min">60min</option>
-            </select>
+            </Select>
 
         </form>
+            <CircleLoader color="red" loading={loanding} size={60} css={loaderStyles} />
             {dataLoaded &&  <Chart data={stock}/>}
-            <CircleLoader color="red" loading={loanding} />
-            <button onClick={()=> {
-                console.log(Data)
-                console.log(stock)
-                }}>try</button>
       </main>
   )
 }
