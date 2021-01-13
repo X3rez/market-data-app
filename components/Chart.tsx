@@ -1,5 +1,6 @@
 
 import {Line} from 'react-chartjs-2'
+import styles from "../styles/chart.module.css";
 
 interface Ioptions {
     labels:string[],
@@ -12,18 +13,14 @@ interface Ioptions {
 
 interface Iprops {
     data:Ioptions,
-    options?:{}
 }
 
-export default function Chart ({data,options}:Iprops){
+export default function Chart ({data}:Iprops){
 
     return(
-        <section>
-
-            <Line data={data} 
-            width={1000}
-            height={400}
-            />
+        <section className={styles.section}>
+            
+            <Line data={data} options={{responsive:true,maintainAspectRatio:false}}/>
 
         </section>)
 }
