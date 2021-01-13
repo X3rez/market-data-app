@@ -23,14 +23,8 @@ export default function Chart ({data,options}:Iprops){
         <section>
 
             <Line data={data} 
-            width={700}
-            height={300}
-            options={{responsive:true,
-                    scales: {
-                        yAxes: [{
-                            stacked: true
-                        }]
-                    }}}
+            width={1000}
+            height={600}
             />
 
    </section>)
