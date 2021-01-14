@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
@@ -21,7 +22,12 @@ const useStyles = makeStyles((theme: Theme) =>
 );
 
 
-export default function Bar():JSX.Element{
+interface titleType {
+  title?:string
+  to:string
+}
+
+export default function Bar({title,to}:titleType):JSX.Element{
     const styles = useStyles();
 
     return(
@@ -35,7 +41,9 @@ export default function Bar():JSX.Element{
           <Typography variant="h5" className={styles.title}>
             MyChart
           </Typography>
-          <Button color="inherit">Login</Button>
+           <Button color="inherit" >
+              <Link href={to}>{title ? title : "Favorites"}</Link>
+           </Button>
         </Toolbar>
       </AppBar>
     

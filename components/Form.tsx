@@ -6,6 +6,7 @@ import mapping from '../untils/mapping'
 import { Input,IconButton,Select } from "@material-ui/core";
 import SearchIcon from "@material-ui/icons/Search";
 import { css } from "@emotion/core"
+import ButtonSave from "./ButtonSave";
 
 
 export default function Form() {
@@ -68,7 +69,7 @@ export default function Form() {
         </form>
     
             {dataLoaded && !loanding
-                ? <Chart data={stock}/> 
+                ? <><ButtonSave toLocalStorage={Data['Meta Data']['2. Symbol']}/> <Chart data={stock}/></> 
                 : !dataLoaded && !loanding
                 ? null
                 :<CircleLoader color="red" loading={true} size={60} css={loaderStyles} /> }
