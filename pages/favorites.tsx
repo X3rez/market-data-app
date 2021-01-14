@@ -5,7 +5,7 @@ import Favorite from "../components/Favorite";
 
 
 export default function Favorites():JSX.Element {
-  let lSData = localStorage.getItem("favorites")
+  let lSData = window.localStorage.getItem("favorites")
   return (
     <div >
       <Head>
