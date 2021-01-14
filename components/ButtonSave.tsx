@@ -2,6 +2,9 @@ import { Button } from '@material-ui/core';
 import {useState,useEffect} from 'react'
 import { createStyles, makeStyles, Theme } from '@material-ui/core/styles';
 
+import checkout from '../untils/checkout'
+
+
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     button: {
@@ -17,7 +20,7 @@ export default function ButtonSave ({toLocalStorage}){
     const [text, setText] = useState<boolean | null>(false)
     
     const handlerClick = ()=>{
-        let lsData = localStorage.getItem("favorites")
+        let lsData = checkout(localStorage.getItem("favorites"))
         let arrData = [];
         
         if(text){
@@ -25,19 +28,19 @@ export default function ButtonSave ({toLocalStorage}){
             let stock = toLocalStorage
             let index = arrLsdata.indexOf(stock)
             arrLsdata.splice(index,1)
-            localStorage.setItem("favorites",JSON.stringify(arrLsdata))
+            checkout(localStorage.setItem("favorites",JSON.stringify(arrLsdata)))
             return setText(false)
         }
 
         if(lsData == null){
             arrData.push(toLocalStorage)
-            localStorage.setItem("favorites",JSON.stringify(arrData))
+            checkout(localStorage.setItem("favorites",JSON.stringify(arrData)))
             setText(!text)
         }else{
             let arrLsData = JSON.parse(lsData)
             let newData = toLocalStorage
             arrLsData.push(newData)
-            localStorage.setItem("favorites",JSON.stringify(arrLsData))
+            checkout(localStorage.setItem("favorites",JSON.stringify(arrLsData)))
             setText(!text)
         }
         
@@ -45,7 +48,7 @@ export default function ButtonSave ({toLocalStorage}){
 
     //To confirm if the chart already is saved
     useEffect(()=>{
-        const lsData = JSON.parse(localStorage.getItem("favorites"))
+        const lsData = checkout(JSON.parse(localStorage.getItem("favorites")))
         if(lsData && lsData.includes(toLocalStorage)){
             setText(true)
         }
