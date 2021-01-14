@@ -1,8 +1,10 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../styles/favorites.module.css'
 import Bar from '../components/appBar'
+import Favorite from "../components/Favorite";
 
-export default function Home():JSX.Element {
+export default function Favorites():JSX.Element {
+  let lSData = localStorage.getItem("favorites")
   return (
     <div >
       <Head>
@@ -13,9 +15,8 @@ export default function Home():JSX.Element {
         <Bar title="Home" to="/"/> 
       </header> 
       <main className={styles.container}>
-        
-        <h2>this is the favorites</h2>
-
+            {!lSData && <h1>You are no have favorites</h1>}
+            {lSData && JSON.parse(lSData).map(el => <Favorite fav={el}/>)}
       </main>
     </div>
   )
