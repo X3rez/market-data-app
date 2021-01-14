@@ -17,7 +17,7 @@ export default function ButtonSave ({toLocalStorage}){
     const [text, setText] = useState<boolean | null>(false)
     
     const handlerClick = ()=>{
-        let lsData = window.localStorage.getItem("favorites")
+        let lsData = localStorage.getItem("favorites")
         let arrData = [];
         
         if(text){
@@ -25,19 +25,19 @@ export default function ButtonSave ({toLocalStorage}){
             let stock = toLocalStorage
             let index = arrLsdata.indexOf(stock)
             arrLsdata.splice(index,1)
-            window.localStorage.setItem("favorites",JSON.stringify(arrLsdata))
+            localStorage.setItem("favorites",JSON.stringify(arrLsdata))
             return setText(false)
         }
 
         if(lsData == null){
             arrData.push(toLocalStorage)
-            window.localStorage.setItem("favorites",JSON.stringify(arrData))
+            localStorage.setItem("favorites",JSON.stringify(arrData))
             setText(!text)
         }else{
             let arrLsData = JSON.parse(lsData)
             let newData = toLocalStorage
             arrLsData.push(newData)
-            window.localStorage.setItem("favorites",JSON.stringify(arrLsData))
+            localStorage.setItem("favorites",JSON.stringify(arrLsData))
             setText(!text)
         }
         
@@ -45,7 +45,7 @@ export default function ButtonSave ({toLocalStorage}){
 
     //To confirm if the chart already is saved
     useEffect(()=>{
-        const lsData = JSON.parse(window.localStorage.getItem("favorites"))
+        const lsData = JSON.parse(localStorage.getItem("favorites"))
         if(lsData && lsData.includes(toLocalStorage)){
             setText(true)
         }

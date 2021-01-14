@@ -2,10 +2,10 @@ import Head from 'next/head'
 import styles from '../styles/favorites.module.css'
 import Bar from '../components/appBar'
 import Favorite from "../components/Favorite";
+import checkout from "../untils/checkout";
 
-
-export default function Favorites():JSX.Element {
-  let lSData = window.localStorage.getItem("favorites")
+export default function Favorites() {
+  let lSData = checkout(localStorage.getItem("favorites"))
   return (
     <div >
       <Head>
