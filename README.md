@@ -1,4 +1,4 @@
-# Market data app
+# Market data app with typescript
 
 ### Demo:
 market-data-app-git-main.x3rez.vercel.app
